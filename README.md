@@ -1,5 +1,3 @@
-# gravity-force-study
-
 ## English
 
 This repository contains studies and experiments developed in C++, focusing on building small tools and exploring different concepts as part of the learning process.
