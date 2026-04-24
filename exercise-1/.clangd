@@ -1,0 +1,6 @@
+CompileFlags:
+  Add:
+    - -std=c++17
+    - -I./imgui
+    - -I./imgui/backends
+    - -I./glfw/include
