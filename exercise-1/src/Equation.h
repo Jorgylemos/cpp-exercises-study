@@ -15,6 +15,7 @@ class Equation {
 
 	public:
 		Equation(Repository& repo): repository(repo) {}
+		double objDistance();	
 		double gravityForce(double distance);
 		double accelerateCalc();
 		double accelerateGravity();

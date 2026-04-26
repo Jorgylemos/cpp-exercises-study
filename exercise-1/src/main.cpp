@@ -4,6 +4,22 @@
 #include "Repository.h"
 
 /*
+ * r = sqrt (x2 - x1)² + (y2 - y1)² + (z2 - z1)²
+ *
+ * */
+
+double Equation::objDistance() {
+ 	auto& obj1 = repository.getObject(0).pos;
+	auto& obj2 = repository.getObject(1).pos;
+
+	double calc = pow((obj2.x - obj1.x), 2) + pow((obj2.y - obj1.y), 2) + pow((obj2.z - obj1.z), 2);
+
+	double r = sqrt(calc);
+
+	return r;
+}
+
+/*
  * F = G m1 m2
  *      -------
  *        r²

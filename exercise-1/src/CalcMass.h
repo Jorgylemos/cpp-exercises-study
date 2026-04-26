@@ -10,7 +10,7 @@ enum ObjType {
 };
 
 
-inline std::optional<double> MassCalc(double objMass, ObjType type, Repository& repository) {
+inline std::optional<double> MassCalc(std::string obj_name, double objMass, ObjType type, Repository& repository, Position pos) {
 
 	constexpr double star_base_mass = 1.989e30;
 	constexpr double planet_base_mass = 5.97e24;
@@ -20,14 +20,23 @@ inline std::optional<double> MassCalc(double objMass, ObjType type, Repository& 
 	if(type == ObjType::STAR) {
 		M = objMass * star_base_mass;
 	
-		repository.save(ObjType::STAR, M);
+		repository.save(
+			obj_name,
+			ObjType::STAR, 
+			M, 
+			pos.objPosition(pos.x, pos.y, pos.z)
+		);
 
 		return M;
 	
 	} else if(type == ObjType::PLANET) {
 		m = objMass * planet_base_mass;
 
-		repository.save(ObjType::PLANET, m);
+		repository.save(
+			ObjType::PLANET, 
+			m,
+			pos.objPosition(pos.x, pos.y, pos.z)
+		);
 		
 		return m;
 	}

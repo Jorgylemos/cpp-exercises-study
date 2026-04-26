@@ -4,30 +4,23 @@
 #include "CalcMass.h"
 #include <stdexcept>
 
-class Position {
-	private:
-		float x, y, z;
-		float vx, vy, vz;
-
-	public:
-		void objPosition(float x, float y, float z) {
-			this-> x = x;
-			this-> y = y;
-			this-> z = z;
-		}
-
-		void velocPosition(float vx, float vy, float vz) {
-			this-> vx = vx;
-			this-> vy = vy;
-			this-> vz = vz;
-		}
+struct Position {
+	
+	float x, y, z;
+	
+	void objPosition(float x, float y, float z) {
+		this-> x = x;
+		this-> y = y;
+		this-> z = z;
+	}
 	
 };
 
 struct AstroObject {
+	std::string obj_name;
 	ObjType type;
-	Position pos;
 	double mass;
+	Position pos;
 };
 
 class Repository {
@@ -36,7 +29,7 @@ class Repository {
 		std::vector<AstroObject> astro_objects = {};
 
 	public:
-		void save(ObjType type, double mass);
+		void save(std::string obj_name, ObjType type, double mass, Position pos);
 
 		const AstroObject& getObject(int index);
 		
@@ -45,8 +38,8 @@ class Repository {
 		size_t size() const;
 };
 
-void Repository::save(ObjType type, double mass) {
-	this->astro_objects.push_back({ type, mass });
+void Repository::save(std::string obj_name, ObjType type, double mass, Position pos) {
+	this->astro_objects.push_back({ obj_name, type, mass, pos });
 };
 
 
